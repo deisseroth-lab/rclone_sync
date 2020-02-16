@@ -14,7 +14,7 @@
 #
 #  First of all, make sure that you are using the shared copy of this script.
 #  **Do not make your own copy!**
-#  
+#
 #  To use the script, run it directly.
 #  (In other words, run it like any other script!)
 #
@@ -44,7 +44,7 @@
 #
 
 #  The partition to use.  If possible, choose a preemptable partition.
-#SBATCH --partition owners
+#SBATCH --partition normal
 
 #  Use one CPU core, 1G RAM, and support sharing resources (if allowed).
 #SBATCH --ntasks 1
@@ -83,13 +83,13 @@
 #  This is the name of the rclone remote that refers to your lab's Team Drive.
 #+ NOTE that it is not the same thing as your actual team drive name, it's just
 #+ an identifier.
-remote_name=quakedrive
+remote_name="${USER}_gdrive_backup"
 
 #  This is the path, relative to your Team Drive's root, where backups should
 #+ go.  Note that the entire path is in quotes, so spaces etc. are allowed.
 #  Use the forward-slash character (a / character) as the path separator.
 #  NOTE: Your path should neither start nor end with a forward-slash!
-drive_path='Sherlock Backupss'
+drive_path='OAK_backup'
 
 #
 # CODE STARTS HERE
@@ -136,7 +136,7 @@ function mail_or_print {
 #  NOTE: For these functions, returning true means returning zero, so that
 #+ the function's result can be used directly in an `if` statement.
 
-# This function returns true 
+# This function returns true
 function rclone_exit_failed {
 	if [ $DEBUG -eq 1 ]; then
 		echo "In rclone_exit_failed with exit code ${1}"
@@ -461,7 +461,7 @@ fi
 # If we're here, then we are running inside a job.
 
 #  Assemble the remote path.
-remote_path="${remote_name}:${drive_path}/${USER}/${1}"
+remote_path=$(echo "${remote_name}:${drive_path}/${USER}/${1}" | tr -s /)
 if [ $DEBUG -eq 1 ]; then
 	echo "Using remote_path ${remote_path}"
 fi
