@@ -54,12 +54,12 @@
 
 #  Limit runtime to 2 hours, but allow to run for only 10 minutes if that gives
 #+ us an opportunity to run at all.  We'll reschedule ourselves if needed.
-#SBATCH --time 2:00:00
+#SBATCH --time 4:00:00
 #SBATCH --time-min 0:10:00
 
 #  Let us know when we're going to be killed.
 #  Also, ask SLURM to only let one of us be running at a time.
-#SBATCH --signal B:USR1@30
+#SBATCH --signal B:USR1@300
 #SBATCH --dependency singleton
 
 #  We support being kicked off of a node.
