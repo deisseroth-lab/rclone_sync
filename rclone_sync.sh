@@ -46,10 +46,10 @@
 #  The partition to use.  If possible, choose a preemptable partition.
 #SBATCH --partition normal
 
-#  Use one CPU core, 1G RAM, and support sharing resources (if allowed).
+#  Use one CPU core, 2G RAM, and support sharing resources (if allowed).
 #SBATCH --ntasks 1
 #SBATCH --cpus-per-task 1
-#SBATCH --mem-per-cpu 1G
+#SBATCH --mem-per-cpu 2G
 #SBATCH --oversubscribe
 
 #  Limit runtime to 2 hours, but allow to run for only 10 minutes if that gives
