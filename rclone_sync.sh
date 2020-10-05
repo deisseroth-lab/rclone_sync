@@ -52,10 +52,8 @@
 #SBATCH --mem-per-cpu 2G
 #SBATCH --oversubscribe
 
-#  Limit runtime to 2 hours, but allow to run for only 10 minutes if that gives
-#+ us an opportunity to run at all.  We'll reschedule ourselves if needed.
-#SBATCH --time 4:00:00
-#SBATCH --time-min 0:10:00
+#  Limit runtime to 3 hours.  We'll reschedule ourselves if needed.
+#SBATCH --time 3:00:00
 
 #  Let us know when we're going to be killed.
 #  Also, ask SLURM to only let one of us be running at a time.
