@@ -319,13 +319,13 @@ fi
 #+ load` changes the environment, and environment changes in a subshell do not
 #+ propagate up to us.
 if [ $DEBUG -eq 1 ]; then
-	echo "Loading modules: system rclone/1.39"
+	echo "Loading modules: system rclone"
 fi
-module load system rclone/1.39 2>&1
+module load system rclone 2>&1
 exit_code=$?
 if [ $exit_code -ne 0 ]; then
 	IFS='' read -r -d '' error_message <<EOF
-The rclone (version 1.39) module, and the system module (which rclone 1.39 requires) could not be loaded.  This either means a problem with your configuration (if you're using a non-default Module program), or the rclone version 1.39 module may be gone (possibly replaced by a newer version?).  Either way, this program will not work until the problem is resolved and the script is updated.
+The rclone module, and the system module could not be loaded.  This either means a problem with your configuration (if you're using a non-default Module program), or the rclone version 1.39 module may be gone (possibly replaced by a newer version?).  Either way, this program will not work until the problem is resolved and the script is updated.
 EOF
 	error_subject="rclone module load problem [ACTION REQUIRED]"
 	mail_or_print "${error_message}" "${error_subject}"
