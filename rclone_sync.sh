@@ -116,15 +116,15 @@ function mail_or_print {
 
 	#  If we are in SLURM, then we need to send an email to the user.
 	#  Otherise, simply print the subject and message to the user.
-	if [ ${SLURM_JOB_ID:=0} -ne 0 ]; then
-		if [ $DEBUG -eq 1 ]; then
-			echo 'Sending email'
-		fi
-		echo "${1}" | mail -s "${2}" $USER
-	else
-		echo "${2}"
-		echo "${1}"
-	fi
+	#if [ ${SLURM_JOB_ID:=0} -ne 0 ]; then
+	#	if [ $DEBUG -eq 1 ]; then
+	#		echo 'Sending email'
+	#	fi
+	#	echo "${1}" | mail -s "${2}" $USER
+	#else
+	echo "${2}"
+	echo "${1}"
+	#fi
 	return 0
 }
 
